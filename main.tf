@@ -5,15 +5,6 @@ resource "azurerm_subnet" "subnet" {
   virtual_network_name = var.virtual_network_name
   address_prefixes = [var.subnet_address_prefixes[count.index]]
   enforce_private_link_endpoint_network_policies = lookup(var.subnet_enforce_private_link_endpoint_network_policies, var.subnet_names[count.index], false)
-
+  
   service_endpoints    = ["Microsoft.Web","Microsoft.Storage","Microsoft.ContainerRegistry"]
-
-  delegation {
-    name = "delegation"
-
-    service_delegation {
-      name    = "Microsoft.ContainerInstance/containerGroups"
-      actions = ["Microsoft.Network/virtualNetworks/subnets/join/action", "Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action"]
-    }
-  }
 }
