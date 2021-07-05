@@ -32,6 +32,30 @@ variable "subnet_enforce_private_link_endpoint_network_policies" {
   default     = {}
 }
 
+variable "service_endpoints" {
+  description = <<EOT
+The list of Service endpoints to associate with the subnet.
+Possible values include:
+* Microsoft.AzureActiveDirectory
+* Microsoft.AzureCosmosDB
+* Microsoft.ContainerRegistry
+* Microsoft.EventHub
+* Microsoft.KeyVault
+* Microsoft.ServiceBus
+* Microsoft.Sql
+* Microsoft.Storage
+* Microsoft.Web
+EOT
+  type        = list(string)
+  default     = []
+}
+
+variable "service_endpoint_policy_ids" {
+  description = "The list of IDs of Service Endpoint Policies to associate with the subnet."
+  type        = list(string)
+  default     = null
+}
+
 variable "tags" {
   description = "The tags to associate with your network and subnets."
   type        = map(string)
@@ -39,4 +63,13 @@ variable "tags" {
   default = {
     environment = "dev"
   }
+}
+
+variable deligations {
+  type = list(object({
+    name = string
+    service_deligation_name = string
+    service_deligation_actions = list(string)
+  }))
+  default = []
 }
