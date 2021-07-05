@@ -13,6 +13,7 @@ variable "core_resource_group_name" {
 variable "route_table_name" {
   description = "The route table name"
   type = string
+  default = ""
 }
 
 variable "virtual_network_name" {
