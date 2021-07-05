@@ -1,10 +1,9 @@
 resource "azurerm_subnet" "subnet" {
-  count = length(var.subnet_names)
-  name = var.subnet_names[count.index]
+  name = var.subnet_name
   resource_group_name = var.core_resource_group_name
   virtual_network_name = var.virtual_network_name
-  address_prefixes = [var.subnet_address_prefixes[count.index]]
-  enforce_private_link_endpoint_network_policies = lookup(var.subnet_enforce_private_link_endpoint_network_policies, var.subnet_names[count.index], false)
+  address_prefixes = var.subnet_address_prefixes
+  enforce_private_link_endpoint_network_policies = var.subnet_enforce_private_link_endpoint_network_policies
   
   # service_endpoints    = ["Microsoft.Web","Microsoft.Storage","Microsoft.ContainerRegistry"]
 

@@ -1,8 +1,8 @@
 
-variable "subnet_names" {
+variable "subnet_name" {
   description = "subnet name"
-  type        = list(string)
-  default     = ["subnet1"]
+  type        = string
+  default     = ""
 }
 
 variable "core_resource_group_name" {
@@ -22,14 +22,14 @@ variable "virtual_network_name" {
 
 variable "subnet_address_prefixes" {
   description = "The address prefix to use for the subnet."
-  type        = list(string)
+  type = list(string)
   default     = ["10.0.1.0/24"]
 }
 
 variable "subnet_enforce_private_link_endpoint_network_policies" {
-  description = "A map with key (string) `subnet name`, value (bool) `true` or `false` to indicate enable or disable network policies for the private link endpoint on the subnet. Default value is false."
-  type        = map(bool)
-  default     = {}
+  description = "subnet endpoint network policy"
+  type        = bool
+  default     = false
 }
 
 variable "service_endpoints" {
