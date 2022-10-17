@@ -12,18 +12,18 @@ variable "core_resource_group_name" {
 
 variable "route_table_name" {
   description = "The route table name"
-  type = string
-  default = ""
+  type        = string
+  default     = ""
 }
 
 variable "virtual_network_name" {
   description = "The Vnet name to be imported"
-  type = string
+  type        = string
 }
 
 variable "subnet_address_prefixes" {
   description = "The address prefix to use for the subnet."
-  type = list(string)
+  type        = list(string)
   default     = ["10.0.1.0/24"]
 }
 
@@ -57,10 +57,10 @@ variable "service_endpoint_policy_ids" {
   default     = null
 }
 
-variable deligations {
+variable "deligations" {
   type = list(object({
-    name = string
-    service_deligation_name = string
+    name                       = string
+    service_deligation_name    = string
     service_deligation_actions = list(string)
   }))
   default = []
