@@ -36,7 +36,7 @@ variable "subnet_enforce_private_link_endpoint_network_policies" {
 variable "subnet_enforce_private_link_service_network_policies" {
   description = "subnet private link service network policy"
   type        = bool
-  default     = false  
+  default     = false
 }
 
 variable "service_endpoints" {
