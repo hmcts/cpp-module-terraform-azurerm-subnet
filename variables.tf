@@ -33,6 +33,12 @@ variable "subnet_enforce_private_link_endpoint_network_policies" {
   default     = false
 }
 
+variable "subnet_enforce_private_link_service_network_policies" {
+  description = "subnet private link service network policy"
+  type        = bool
+  default     = false
+}
+
 variable "service_endpoints" {
   description = <<EOT
 The list of Service endpoints to associate with the subnet.
