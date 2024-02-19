@@ -63,11 +63,11 @@ variable "service_endpoint_policy_ids" {
   default     = null
 }
 
-variable "deligations" {
+variable "delegation" {
   type = list(object({
     name                       = string
-    service_deligation_name    = string
-    service_deligation_actions = list(string)
+    service_delegation_name    = string
+    service_delegation_actions = list(string)
   }))
   default = []
 }
