@@ -29,8 +29,13 @@ variable "subnet_address_prefixes" {
 
 variable "subnet_enforce_private_link_endpoint_network_policies" {
   description = "subnet endpoint network policy"
-  type        = bool
-  default     = false
+  type        = string
+  default     = "Disabled"
+
+  validation {
+    condition = contains(["Disabled", "Enabled", "NetworkSecurityGroupEnabled", "RouteTableEnabled"], var.subnet_enforce_private_link_endpoint_network_policies)
+    error_message = "Possible values are Disabled, Enabled, NetworkSecurityGroupEnabled and RouteTableEnabled."
+  }
 }
 
 variable "subnet_enforce_private_link_service_network_policies" {
