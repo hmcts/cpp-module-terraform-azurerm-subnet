@@ -30,7 +30,7 @@ variable "subnet_address_prefixes" {
 variable "subnet_enforce_private_link_endpoint_network_policies" {
   description = "subnet endpoint network policy"
   type        = bool
-  default     = false
+  default     = Disabled
 }
 
 variable "subnet_enforce_private_link_service_network_policies" {
