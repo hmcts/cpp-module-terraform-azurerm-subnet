@@ -27,13 +27,13 @@ variable "subnet_address_prefixes" {
   default     = ["10.0.1.0/24"]
 }
 
-variable "subnet_enforce_private_link_endpoint_network_policies" {
+variable "private_endpoint_network_policies" {
   description = "subnet endpoint network policy"
-  type        = bool
-  default     = false
+  type        = string
+  default     = "Disabled"
 }
 
-variable "subnet_enforce_private_link_service_network_policies" {
+variable "private_link_service_network_policies_enabled" {
   description = "subnet private link service network policy"
   type        = bool
   default     = false
