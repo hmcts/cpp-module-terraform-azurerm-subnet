@@ -38,11 +38,11 @@ resource "azurerm_virtual_network" "vnet" {
 }
 
 module "subnet" {
-  source                                                = "../../../"
-  subnet_name                                           = "subnet3"
-  core_resource_group_name                              = azurerm_resource_group.test.name
-  virtual_network_name                                  = azurerm_virtual_network.vnet.name
-  subnet_address_prefixes                               = ["10.0.10.0/24"]
-  private_endpoint_network_policies                     = "Enabled"
-  depends_on                                            = [azurerm_virtual_network.vnet]
+  source                            = "../../../"
+  subnet_name                       = "subnet3"
+  core_resource_group_name          = azurerm_resource_group.test.name
+  virtual_network_name              = azurerm_virtual_network.vnet.name
+  subnet_address_prefixes           = ["10.0.10.0/24"]
+  private_endpoint_network_policies = "Enabled"
+  depends_on                        = [azurerm_virtual_network.vnet]
 }
