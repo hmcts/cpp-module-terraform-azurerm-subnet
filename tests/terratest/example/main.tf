@@ -26,23 +26,23 @@ resource "azurerm_virtual_network" "vnet" {
   address_space       = ["10.0.0.0/16"]
   depends_on          = [azurerm_resource_group.test]
   subnet {
-    name           = "subnet1"
-    address_prefix = "10.0.1.0/24"
+    name             = "subnet1"
+    address_prefixes = ["10.0.1.0/24"]
   }
 
   subnet {
-    name           = "subnet2"
-    address_prefix = "10.0.2.0/24"
+    name             = "subnet2"
+    address_prefixes = ["10.0.2.0/24"]
     #security_group = azurerm_network_security_group.example.id
   }
 }
 
 module "subnet" {
-  source                                                = "../../../"
-  subnet_name                                           = "subnet3"
-  core_resource_group_name                              = azurerm_resource_group.test.name
-  virtual_network_name                                  = azurerm_virtual_network.vnet.name
-  subnet_address_prefixes                               = ["10.0.10.0/24"]
-  subnet_enforce_private_link_endpoint_network_policies = true
-  depends_on                                            = [azurerm_virtual_network.vnet]
+  source                            = "../../../"
+  subnet_name                       = "subnet3"
+  core_resource_group_name          = azurerm_resource_group.test.name
+  virtual_network_name              = azurerm_virtual_network.vnet.name
+  subnet_address_prefixes           = ["10.0.10.0/24"]
+  private_endpoint_network_policies = "Enabled"
+  depends_on                        = [azurerm_virtual_network.vnet]
 }

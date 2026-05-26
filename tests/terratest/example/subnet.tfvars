@@ -1,2 +1,2 @@
-location      = "westus"
-vnet_location = "eastus"
+location      = "uksouth"
+vnet_location = "uksouth"
