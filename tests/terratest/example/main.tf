@@ -1,8 +1,21 @@
+terraform {
+  required_version = "= 1.5.3"
+
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "= 3.113.0"
+    }
+    random = {
+      source  = "hashicorp/random"
+      version = ">= 3.1.0"
+    }
+  }
+}
 
 provider "azurerm" {
   features {}
 }
-
 
 resource "random_id" "rg_name" {
   byte_length = 8
@@ -43,6 +56,6 @@ module "subnet" {
   core_resource_group_name          = azurerm_resource_group.test.name
   virtual_network_name              = azurerm_virtual_network.vnet.name
   subnet_address_prefixes           = ["10.0.10.0/24"]
-  private_endpoint_network_policies = "Enabled"
+  subnet_enforce_private_link_endpoint_network_policies = true
   depends_on                        = [azurerm_virtual_network.vnet]
 }
