@@ -8,7 +8,6 @@ resources:
   - repository: cppAzureDevOpsTemplates
     type: github
     name: hmcts/cpp-azure-devops-templates
-    # ref: 'debug-tfenv-issue'
     ref: 'main'
     endpoint: 'hmcts'
 
