@@ -1,13 +1,16 @@
 
 variable "subnet_name" {
+  # required
   description = "subnet name"
   type        = string
   default     = ""
 }
 
 variable "core_resource_group_name" {
+  # required
   description = "The resource group name to be imported"
   type        = string
+  default     = ""
 }
 
 variable "route_table_name" {
@@ -17,8 +20,10 @@ variable "route_table_name" {
 }
 
 variable "virtual_network_name" {
-  description = "The Vnet name to be imported"
+  # required
+  description = "The Vnet name to put the subnet into"
   type        = string
+  default     = ""
 }
 
 variable "subnet_address_prefixes" {

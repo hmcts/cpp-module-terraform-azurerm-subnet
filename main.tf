@@ -1,4 +1,5 @@
 resource "azurerm_subnet" "subnet" {
+  count                                          = var.core_resource_group_name != "" && var.virtual_network_name != "" ? 1 : 0
   name                                           = var.subnet_name
   resource_group_name                            = var.core_resource_group_name
   virtual_network_name                           = var.virtual_network_name
